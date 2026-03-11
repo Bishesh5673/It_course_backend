@@ -6,7 +6,7 @@ const courseRouter = express.Router()
 
 courseRouter.post('/createCourse',upload.single('image') ,createCourse)
 courseRouter.get('/getCourse' ,getCourse)
-courseRouter.put('/updateCourse/:id',updateCourse)
+courseRouter.put('/updateCourse/:id', upload.single("image"),updateCourse)
 courseRouter.delete('/deleteCourse/:id' ,deleteCourse)
 
 export default courseRouter

@@ -57,3 +57,25 @@ export const getUserEnrollments = async (req, res) => {
   }
 };
 
+export const getAllEnrollments = async (req, res) => {
+  try {
+
+    const enrollments = await Enroll.find()
+      .populate("userId", "username email")
+      .populate("courseId", "title price");
+
+    res.status(200).json({
+      success: true,
+      enrollments
+    });
+
+  } catch (error) {
+
+    res.status(500).json({
+      success: false,
+      message: "Server error"
+    });
+
+  }
+};
+
